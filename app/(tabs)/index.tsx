@@ -1,48 +1,74 @@
-import { ScrollView, Text, View, TouchableOpacity } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 
 import { ScreenContainer } from "@/components/screen-container";
 
 /**
- * Home Screen - NativeWind Example
- *
- * This template uses NativeWind (Tailwind CSS for React Native).
- * You can use familiar Tailwind classes directly in className props.
- *
- * Key patterns:
- * - Use `className` instead of `style` for most styling
- * - Theme colors: use tokens directly (bg-background, text-foreground, bg-primary, etc.); no dark: prefix needed
- * - Responsive: standard Tailwind breakpoints work on web
- * - Custom colors defined in tailwind.config.js
+ * Home Screen - Welcome and quick navigation
  */
 export default function HomeScreen() {
   return (
     <ScreenContainer className="p-6">
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View className="flex-1 gap-8">
+        <View className="flex-1 gap-6">
           {/* Hero Section */}
           <View className="items-center gap-2">
-            <Text className="text-4xl font-bold text-foreground">Welcome</Text>
+            <Text className="text-4xl font-bold text-foreground">AI Civilization</Text>
             <Text className="text-base text-muted text-center">
-              Edit app/(tabs)/index.tsx to get started
+              Simulate autonomous AI agents discovering knowledge
             </Text>
           </View>
 
-          {/* Example Card */}
-          <View className="w-full max-w-sm self-center bg-surface rounded-2xl p-6 shadow-sm border border-border">
-            <Text className="text-lg font-semibold text-foreground mb-2">NativeWind Ready</Text>
-            <Text className="text-sm text-muted leading-relaxed">
-              Use Tailwind CSS classes directly in your React Native components.
+          {/* Quick Start Card */}
+          <View className="w-full bg-primary rounded-2xl p-6 shadow-sm">
+            <Text className="text-lg font-semibold text-white mb-2">Getting Started</Text>
+            <Text className="text-sm text-white leading-relaxed mb-4">
+              Watch AI agents explore, research, and collaborate in a simulated world.
+            </Text>
+            <Text className="text-xs text-white opacity-80">
+              Tap Dashboard to begin the simulation
             </Text>
           </View>
 
-          {/* Example Button */}
-          <View className="items-center">
-            <TouchableOpacity className="bg-primary px-6 py-3 rounded-full active:opacity-80">
-              <Text className="text-background font-semibold">Get Started</Text>
-            </TouchableOpacity>
+          {/* Features */}
+          <View className="gap-3">
+            <FeatureCard
+              title="Dashboard"
+              description="Monitor civilization statistics and issue research commands"
+              emoji="📊"
+            />
+            <FeatureCard
+              title="World Map"
+              description="Visualize agents and their interactions in 2D space"
+              emoji="🗺️"
+            />
+            <FeatureCard
+              title="Knowledge Base"
+              description="Browse discoveries and research completed by agents"
+              emoji="📚"
+            />
+          </View>
+
+          {/* Info */}
+          <View className="bg-surface rounded-xl p-4 gap-2 border border-border">
+            <Text className="text-sm font-semibold text-foreground">About This App</Text>
+            <Text className="text-xs text-muted leading-relaxed">
+              This is a mobile simulation of an autonomous research civilization. Agents with IQ 150+ explore, collaborate, and generate knowledge through riset otonom.
+            </Text>
           </View>
         </View>
       </ScrollView>
     </ScreenContainer>
+  );
+}
+
+function FeatureCard({ title, description, emoji }: { title: string; description: string; emoji: string }) {
+  return (
+    <View className="bg-surface rounded-xl p-4 border border-border flex-row gap-3">
+      <Text className="text-2xl">{emoji}</Text>
+      <View className="flex-1">
+        <Text className="text-sm font-semibold text-foreground">{title}</Text>
+        <Text className="text-xs text-muted leading-relaxed">{description}</Text>
+      </View>
+    </View>
   );
 }
